@@ -292,7 +292,7 @@ select.inp{width:auto;padding:4px 6px}
 .invd{display:flex;gap:10px;margin:10px 0}.invd>div{flex:1;border:1px solid #e5e8ee;border-radius:8px;padding:9px 12px;font-size:10.5px;color:#6b7280}
 .invd b{display:block;font-size:14px;color:#1f2430;margin-top:3px;font-variant-numeric:tabular-nums}.invd .k{background:#eaf2ff;border-color:#2D74CA}.invn{padding:24px;text-align:center;color:#a0a6b2}
 @media print{body.pinv .rail,body.pinv .side,body.pinv #top,body.pinv #tabs,body.pinv #foot{display:none!important}body.pinv .page>:not(#invwrap){display:none!important}body.pinv #invwrap .hd .rt{display:none!important}body.pinv .scroll{overflow:visible!important;height:auto!important}body.pinv .app{display:block!important;height:auto!important}}
-</style>
+.stsc{max-height:592px;overflow:auto;border:1px solid #e5e8ee;border-radius:8px}.stsc table.tb{margin:0}.stsc thead th{position:sticky;top:0;z-index:1;background:#fafbfc;box-shadow:0 1px 0 #e5e8ee}@media print{body.pstmt .stsc{max-height:none!important;overflow:visible!important;border:0}}</style>
 </head>
 <body>
 <div class="app">
@@ -988,8 +988,8 @@ function stmtCard(){
     '<div class="stc">채널 '+chs+' 대상 월 '+mos+'<span>(기본: 전월)</span></div><div class="stm">'+
     '<div class="sh"><div>채널<b>'+esc(c.display_name)+'</b></div><div>대상 기간<b>'+S.month.slice(5)+'/01 ~ '+S.month.slice(5)+'/'+ms+'</b></div><div>발행 예정일<b>'+esc(issue.slice(5).replace('-','/'))+(STAR.issue[k]?'<span class="ast">*</span>':'')+'</b></div><div>따로 낼 수수료 납부 예정일<b>'+(due?esc(due.slice(5).replace('-','/')):'해당 없음 (전액 정산에서 차감)')+'</b></div></div>'+
     '<div class="sq2">아래 예약 건이 맞는지 확인해 주세요.</div>'+
-    '<table class="tb"><thead><tr><th>예약번호</th><th>체크인</th><th>체크아웃</th><th>결제 방식</th><th class="n">예약금</th><th class="n">VAT</th><th class="n">총금액</th><th class="n">수수료율</th><th class="n">수수료</th><th>비고</th></tr></thead><tbody>'+
-    (rows.length?listH:'<tr><td colspan="10" style="height:56px;text-align:center;color:#a0a6b2">이 달에 체크아웃한 예약이 없습니다</td></tr>')+'</tbody></table>'+
+    '<div class="stsc"><table class="tb"><thead><tr><th>예약번호</th><th>체크인</th><th>체크아웃</th><th>결제 방식</th><th class="n">예약금</th><th class="n">VAT</th><th class="n">총금액</th><th class="n">수수료율</th><th class="n">수수료</th><th>비고</th></tr></thead><tbody>'+
+    (rows.length?listH:'<tr><td colspan="10" style="height:56px;text-align:center;color:#a0a6b2">이 달에 체크아웃한 예약이 없습니다</td></tr>')+'</tbody></table></div>'+
     '<div class="sum"><div>예약 합계(총금액)<b>'+won(gp.tot+gq.tot)+'원</b></div><div>총 수수료<small>채널이 발행할 서류의 합계</small><b>'+won(gp.fee+gq.fee)+'원</b></div><div>정산에서 이미 뺀 수수료<small>채널 결제 '+np+'건</small><b>'+won(gp.fee)+'원</b></div><div class="k">따로 낼 수수료<small>현장 결제 '+nq+'건</small><b>'+won(gq.fee)+'원</b></div></div>'+
     '<div class="note">예약금·VAT는 총금액을 VAT 포함 금액으로 보고 10%로 나눈 예시값입니다<span class="ast">*</span>. 수수료는 총금액에 수수료율을 곱해 계산했습니다<span class="ast">*</span>. 세금계산서·영수증을 누가 누구에게 어떤 금액으로 발행하는지는 채널·계약마다 다르므로 이 화면은 금액 대사용이며 발행 방식을 정하지 않습니다. 실제 플랫폼 정산 내역서와 금액·기준이 다를 수 있습니다.</div></div></div>';
 }
